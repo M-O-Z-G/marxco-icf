@@ -1,0 +1,23 @@
+doctype html
+- var nameSite = "Marxco Icons CS"
+- var prefix = "mrx_"
+block html
+	html.no-js(lang="" itemscope itemtype="http://schema.org/"+itemtype)
+		block head
+			head
+				meta(charset='utf-8')
+				meta(http-equiv='x-ua-compatible' content='ie=edge')
+				title #{title} - #{nameSite}
+				meta(name='description' content=description)
+				meta(name='viewport' content='width=device-width, initial-scale=1')
+				link(rel='manifest' href='site.webmanifest')
+				// inject:css
+				// endinject
+		body
+			<!--[if lte IE 9]>
+				p.browserupgrade
+					| You are using an #[strong outdated] browser.
+					| Please #[a(href='https://browsehappy.com/') upgrade your browser] to improve your experience and security.
+			<![endif]-->
+			div#wrapper
+				block content

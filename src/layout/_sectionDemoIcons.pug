@@ -1,0 +1,11 @@
+include _icons
+
+section.demo-icons.mrx_c-row.mrx_c-row--center
+	each item, index in icShowcase
+		if item.name != 'badge-designed-with'
+			.mrx_c-row__col.mrx_c-row__col--1-2.mrx_c-row__col--md-1-4.mrx_c-row__col--lg-1-6
+				figure
+					span(class=prefix + 'ic ' + prefix + 'ic-' + item.name)
+					figcaption
+						strong #{item.name}
+					figcaption #{item.char}

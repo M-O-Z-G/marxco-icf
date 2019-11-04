@@ -1,0 +1,4 @@
+-
+	var icShowcase = [<% _.each(glyphs, function(glyph) { %>
+		{ name: "<%= glyph.name %>", variable: "$ic-<%= glyph.name %>", char: "\\\<%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %>" }, <% }); %>
+	]
