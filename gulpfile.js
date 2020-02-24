@@ -1,10 +1,12 @@
-var gulp           = require('gulp'),
+const gulp         = require('gulp'),
+	fs             = require('fs'),
+	path           = require('path'),
 	pub            = 'public',
 	src            = 'src',
-	styles         = src + '/styles',
 	fontPath       = src + '/icons',
 	fontPathPub    = pub + '/font',
-	JSONPath       = src + '/json',
+	pathImg        = src + '/img',
+	pathPubImg     = pub + '/img',
 	templatesPath  = src + '/templates',
 
 	appName        = 'Marxco Icons CS',
@@ -33,7 +35,6 @@ var gulp           = require('gulp'),
 
 	ansiColors      = require('ansi-colors'),
 	async           = require('async'),
-	autoprefixer    = require('autoprefixer-stylus'),
 	changed         = require('gulp-changed'),
 	consolidate     = require('gulp-consolidate'),
 	debug           = require('gulp-debug'),
@@ -46,31 +47,32 @@ var gulp           = require('gulp'),
 	rename          = require('gulp-rename'),
 	run             = require('gulp-run'),
 	runSequence     = require('run-sequence'),
+	sort            = require('gulp-sort'),
 	sourcemaps      = require('gulp-sourcemaps'),
 	vinylPaths      = require('vinyl-paths');
 
 // Error notificator
-var reportError = function (error) {
-	var lineNumber = (error.lineNumber) ? 'LINE ' + error.lineNumber + ' -- ' : '';
+function reportError(error) {
+	let lineNumber = (error.lineNumber) ? `${LINE} error.lineNumber -- ` : ``;
 
 	notify({
-		title: 'Task Failed [' + error.plugin + ']',
-		message: lineNumber + 'See console.'
+		title: `Task Failed [${error.plugin}]`,
+		message: `${lineNumber}See console.`
 	}).write(error);
 
-	var report = '';
-	var chalk = ansiColors.white.bgRed;
+	let report = '';
+	let chalk = ansiColors.white.bgRed;
 
-	report += chalk('TASK:') + ' [' + error.plugin + ']\n';
-	report += chalk('PROB:') + ' ' + error.message + '\n';
-	if (error.lineNumber) { report += chalk('LINE:') + ' ' + error.lineNumber + '\n'; }
-	if (error.fileName)   { report += chalk('FILE:') + ' ' + error.fileName + '\n'; }
+	report += `${chalk('TASK:')} [${error.plugin}]`;
+	report += `${chalk('PROB:')} [${error.message}]`;
+	if (error.lineNumber) { report += `${chalk('LINE:')} ${error.lineNumber}`; }
+	if (error.fileName)   { report += `${chalk('FILE:')} ${error.fileName}`; }
 	console.error(report);
 
 	this.emit('end');
 };
 
-var checkForUnicodeInFilename = function(e) {
+function checkForUnicodeInFilename(e) {
 	if ( e.match(/^u[0-9A-F]{4,5}-/g) != null ) {
 		return e.match(/^u[0-9A-F]{4,5}-/g)[0].length;
 	}
@@ -78,35 +80,34 @@ var checkForUnicodeInFilename = function(e) {
 	return false;
 };
 
-var randomHash = function () {
-  var hash = "";
-  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+function randomHash() {
+	let hash = "";
+	let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-  for (var i = 0; i < 10; i++)
-    hash += chars.charAt(Math.floor(Math.random() * chars.length));
+	for (let i = 0; i < 10; i++) {
+		hash += chars.charAt(Math.floor(Math.random() * chars.length));
+	}
 
-  return hash;
-},
-fileVersion = randomHash();
+	return hash;
+};
 
-gulp.task('default', function() {
-	// place code for your default task here
-});
+const fileVersion = randomHash();
 
 // Clean icons names
-gulp.task('clean-names', function(cb) {
-	return gulp.src(fontPath + '/**/*.svg', {base: './'})
+function cleanNames(cb) {
+	return gulp
+		.src(`${fontPath}/**/*.svg`, {base: './'})
 		.pipe(vinylPaths(del))
 		.pipe(rename(function(path) {
-			var l= checkForUnicodeInFilename(path.basename)
+			let l= checkForUnicodeInFilename(path.basename)
 			path.basename= (l != null) ? path.basename.substr(l) : path.basename;
 		}))
 		.pipe(gulp.dest('./'));
-});
+};
 
 // Grouping icons within unicode ranges
-gulp.task('unicodify', function(cb) {
-	gulp.src(fontPath + '/**/*.svg', {base: './'})
+function unicodify(cb) {
+	gulp.src(`${fontPath}/**/*.svg`, {base: './'})
 		.pipe(vinylPaths(del))
 		.pipe(rename(function(path) {
 			prefix= path.basename.match(/^(.*?)(?=-)/);
@@ -137,116 +138,147 @@ gulp.task('unicodify', function(cb) {
 			path.basename = u + '-' + path.basename;
 		}))
 		.pipe(gulp.dest('./'));
-});
+};
 
 // Clean
-gulp.task('clean', function(cb) {
-	return run( 'rimraf '+ pub ).exec();
-});
+function clean(cb) {
+	return del(pub);
+};
 
-gulp.task('organize', function () {
-	licIcons           = fontPath + '/lic-*.svg',
-	socialIcons        = fontPath + '/social-*.svg',
-	devIcons           = fontPath + '/dev-*.svg',
-	financeIcons       = fontPath + '/finance-*.svg',
-	logoIcons          = fontPath + '/logo-*.svg',
-	politIcons         = fontPath + '/polit-*.svg',
-	softwareIcons      = fontPath + '/software-*.svg',
-	grafxIcons         = fontPath + '/grafx-*.svg',
-	threeDeIcons       = fontPath + '/3d-*.svg',
-	docIcons           = fontPath + '/doc-*.svg',
-	badgeIcons         = fontPath + '/badge-*.svg',
-	marketIcons        = fontPath + '/market-*.svg',
-	cultIcons          = fontPath + '/cult-*.svg',
-	gemIcons           = fontPath + '/gem-*.svg',
-	miscellaneousIcons = [
-		fontPath + '/*.svg',
-		'!' + fontPath + '/lic-*.svg',
-		'!' + fontPath + '/social-*.svg',
-		'!' + fontPath + '/dev-*.svg',
-		'!' + fontPath + '/finance-*.svg',
-		'!' + fontPath + '/logo-*.svg',
-		'!' + fontPath + '/polit-*.svg',
-		'!' + fontPath + '/software-*.svg',
-		'!' + fontPath + '/grafx-*.svg',
-		'!' + fontPath + '/3d-*.svg',
-		'!' + fontPath + '/doc-*.svg',
-		'!' + fontPath + '/badge-*.svg',
-		'!' + fontPath + '/market-*.svg',
-		'!' + fontPath + '/cult-*.svg',
-		'!' + fontPath + '/gem-*.svg'
+function organize() {
+	const licIcons          = `${fontPath}/lic-*.svg`,
+		socialIcons         = `${fontPath}/social-*.svg`,
+		devIcons            = `${fontPath}/dev-*.svg`,
+		financeIcons        = `${fontPath}/finance-*.svg`,
+		logoIcons           = `${fontPath}/logo-*.svg`,
+		politIcons          = `${fontPath}/polit-*.svg`,
+		softwareIcons       = `${fontPath}/software-*.svg`,
+		grafxIcons          = `${fontPath}/grafx-*.svg`,
+		threeDeIcons        = `${fontPath}/3d-*.svg`,
+		docIcons            = `${fontPath}/doc-*.svg`,
+		badgeIcons          = `${fontPath}/badge-*.svg`,
+		marketIcons         = `${fontPath}/market-*.svg`,
+		cultIcons           = `${fontPath}/cult-*.svg`,
+		gemIcons            = `${fontPath}/gem-*.svg`,
+		 miscellaneousIcons = [
+		`${fontPath}/*.svg`,
+		`!${licIcons}`,
+		`!${socialIcons}`,
+		`!${devIcons}`,
+		`!${financeIcons}`,
+		`!${logoIcons}`,
+		`!${politIcons}`,
+		`!${softwareIcons}`,
+		`!${grafxIcons}`,
+		`!${threeDeIcons}`,
+		`!${docIcons}`,
+		`!${badgeIcons}`,
+		`!${marketIcons}`,
+		`!${cultIcons}`,
+		`!${gemIcons}`
 	];
 
 	gulp.src(licIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/licenses/'));
+		.pipe(gulp.dest(`${fontPath}/licenses/`));
 
 	gulp.src(socialIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/social/'));
+		.pipe(gulp.dest(`${fontPath}/social/`));
 
 	gulp.src(devIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/dev/'));
+		.pipe(gulp.dest(`${fontPath}/dev/`));
 
 	gulp.src(financeIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/finance/'));
+		.pipe(gulp.dest(`${fontPath}/finance/`));
 
 	gulp.src(logoIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/logotypes/'));
+		.pipe(gulp.dest(`${fontPath}/logotypes/`));
 
 	gulp.src(politIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/politics/'));
+		.pipe(gulp.dest(`${fontPath}/politics/`));
 
 	gulp.src(softwareIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/software/'));
+		.pipe(gulp.dest(`${fontPath}/software/`));
 
 	gulp.src(grafxIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/graphics/'));
+		.pipe(gulp.dest(`${fontPath}/graphics/`));
 
 	gulp.src(threeDeIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/3d/'));
+		.pipe(gulp.dest(`${fontPath}/3d/`));
 
 	gulp.src(docIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/documents/'));
+		.pipe(gulp.dest(`${fontPath}/documents/`));
 
 	gulp.src(badgeIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/badges/'));
+		.pipe(gulp.dest(`${fontPath}/badges/`));
 
 	gulp.src(marketIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/marketplaces/'));
+		.pipe(gulp.dest(`${fontPath}/marketplaces/`));
 
 	gulp.src(cultIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/culture/'));
+		.pipe(gulp.dest(`${fontPath}/culture/`));
 
 	gulp.src(gemIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/gems/'));
+		.pipe(gulp.dest(`${fontPath}/gems/`));
 
 	gulp.src(miscellaneousIcons)
 		.pipe(vinylPaths(del))
-		.pipe(gulp.dest(fontPath + '/miscellaneous/'));
-})
+		.pipe(gulp.dest(`${fontPath}/miscellaneous/`));
+}
 
-gulp.task('generation', function () {
-	var fontName = 'Marxco Icons CS',
-		iconStream = gulp.src([fontPath + '/**/*.svg'])
+function generation(cb) {
+	let fontName = 'Marxco Icons CS',
+		iconStream = gulp.src(`${fontPath}/**/*.svg`)
+		.pipe(sort({
+			comparator: function(file1, file2) {
+				function sanitizeIconName(f) {
+					let out = new Object();
+					out.name = f.path.replace(/.*src\\icons\\.*u[A-F0-9]+-/, '');
+					out.categorized = out.name.split('-')[0].match('lic|social|dev|finance|logo|polit|software|grafx|3d|doc|badge|market|cult|gem');
+					out.categorized = (out.categorized != null) ? true : false;
+					return out;
+				}
+				const f1 = sanitizeIconName(file1),
+					f2   = sanitizeIconName(file2);
+				let f1n = f1.name,
+					f2n = f2.name,
+					f1c = f1.categorized,
+					f2c = f2.categorized;
+				let r;
+				if (f1c < f2c) {
+					return 1;
+				} else if (f1c > f2c) {
+					return -1;
+				} else {
+					if (f1n > f2n) {
+						return 1;
+					}
+					if (f1n < f2n ) {
+						return -1;
+					}
+				}
+				return 0;
+			}
+		}))
 		.pipe(iconFont({
 			fontName: fontName,
 			formats: ['svg', 'ttf', 'eot', 'woff', 'woff2'],
 			copyright: 'Alexander "M.O.Z.G" Dikov',
 			description: 'Iconfont for Marxco Component System',
-			version: '1.5',
+			version: '1.6',
 			ascent: 896,
 			descent: 128,
 			url: url,
@@ -285,31 +317,6 @@ gulp.task('generation', function () {
 					.on('finish', cb);
 			});
 		},
-		// function handleAbstract (cb) {
-		// 	iconStream.on('glyphs', function(glyphs, options) {
-		// 		gulp.src(templatesPath + '/_a_ic.styl')
-		// 			.pipe(consolidate('lodash', {
-		// 				fontName: fontName,
-		// 			}))
-		// 			.pipe(rename('ic.styl'))
-		// 			.pipe(gulp.dest(marxco + '/core/abstract/'))
-		// 			.on('finish', cb);
-		// 	});
-		// },
-		// function handleFamily (cb) {
-		// 	iconStream.on('glyphs', function(glyphs, options) {
-		// 		gulp.src(templatesPath + '/_font.styl')
-		// 			.pipe(consolidate('lodash', {
-		// 				glyphs: glyphs,
-		// 				fileVersion: fileVersion,
-		// 				fontName: fontName,
-		// 				fontPath: '/assets/fonts'
-		// 			}))
-		// 			.pipe(rename('font.styl'))
-		// 			.pipe(gulp.dest(marxco + '/core/variable/'))
-		// 			.on('finish', cb);
-		// 	});
-		// },
 		function handleShowcase (cb) {
 			iconStream.on('glyphs', function(glyphs, options) {
 				gulp.src(templatesPath + '/_icons.pug')
@@ -317,7 +324,7 @@ gulp.task('generation', function () {
 						glyphs: glyphs
 					}))
 					.pipe(rename('_icons.pug'))
-					.pipe(gulp.dest(src + '/layout/'))
+					.pipe(gulp.dest(src + '/layout/dataset/'))
 					.on('finish', cb);
 			});
 		},
@@ -326,17 +333,26 @@ gulp.task('generation', function () {
 				.pipe(gulp.dest(fontPathPub))
 				.on('finish', cb);
 		}
-	]);
-});
+		
+	], cb);
+};
+
+// Images
+function images() {
+	return gulp.src([`${pathImg}/**/*.*`, `!${pathImg}/_**/*.*`])
+		.pipe(gulp.dest(`${pathPubImg}/`))
+		.pipe(debug());
+};
 
 // Layout
-gulp.task('layout', function buildHTML() {
-	var sources = gulp.src(pub + '/**/*.css', {read: false});
+function layout() {
+	let sources = gulp.src(`${pub}/**/*.css`, {read: false});
 
-	return gulp.src([src + '/layout/**/*.pug', '!' + src + '/layout/**/_*.pug'])
-		.pipe(gulpPug({ }))
+	return gulp
+		.src([`${src}/**/*.pug`, `!${src}/**/_*.pug`, `!${src}/update-preview.pug`])
+		.pipe(gulpPug())
 		.on('error', reportError )
-		.pipe(inject(sources, {ignorePath: pub + '/', addRootSlash: false}))
+		.pipe(inject(sources, {ignorePath: `${pub}/`, addRootSlash: false}))
 		.on('error', reportError )
 		.pipe(htmlbeautify(
 			options = {
@@ -346,9 +362,17 @@ gulp.task('layout', function buildHTML() {
 		.on('error', reportError )
 		.pipe(gulp.dest(pub))
 		.pipe(debug());
-});
+};
 
-gulp.task('default', ['clean'], function(cb) {
-	runSequence(['generation'], 'layout', cb);
-});
+const build = gulp.series(clean, generation, images, layout);
+
+// Export tasks
+exports.cleanNames = cleanNames;
+exports.unicodify = unicodify;
+exports.clean = clean;
+exports.organize = organize;
+exports.generation = generation;
+exports.images = images;
+exports.layout = layout;
+exports.default = build;
 

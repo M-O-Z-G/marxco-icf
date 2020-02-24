@@ -26,7 +26,7 @@ But if you're planning to make some changes:
 4. Clone this repository to local.
 5. Run terminal, set current dir to the path of your local repository.
 6. Run `yarn install` and wait for finished of instllation all dependencies.
-7. Run `gulp clean-names` to remove unicode prefixes from filenames.
+7. Run `gulp cleanNames` to remove unicode prefixes from filenames.
 8. Run `gulp organize` to move all svg files from `src\icons` to related sub-deirectories, based on their prefixes.
 9. Run `gulp unicodify` to add unicode prefixes to filenames, base of `icRanges` array from `gulpfile.js`.
 10. Run `gulp generation` to rewrite all templates, generate fonts and css files.

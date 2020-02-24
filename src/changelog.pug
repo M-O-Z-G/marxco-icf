@@ -1,0 +1,96 @@
+extends layout/_layout
+
+prepend html
+	- var title = "Changelog"
+	- var description = "Open version of icon font from upcoming Marxco component system."
+
+block content
+	.container
+		section.changelog
+			.content
+				h1 Changelog
+				h2 1.6.0 - 2020-02-24
+				img(src='img/1_6_0-20200223.png')
+				h3 Added
+				ul
+					li
+						code finance-liberapay
+						|  and 
+						code finance-liberapay-square
+						| .
+					li
+						code social-pawoo
+						| and
+						code social-pawoo-square
+						| .
+					li
+						code social-deviantart-square
+					li
+						code social-flickr-square
+					li
+						code social-mastodon-square
+					li
+						code social-medium-square
+					li
+						code social-steemit
+						|  and 
+						code social-steemit-square
+						| .
+					li
+						code gem-asscher
+					li
+						code gem-cushion
+					li
+						code gem-emerald
+					li
+						code gem-heart
+					li
+						code gem-marquise
+					li
+						code gem-princess
+					li
+						code gem-radiant
+					li
+						code doc-afpub
+					li
+						code logo-gitlab-square
+					li
+						code logo-gumroad-square
+					li
+						code weight
+				h3 Changed
+				ul
+					li
+						| Removed loose parts from 
+						code gem-oval
+						|  and 
+						code gem-round
+					li
+						code logo-github
+					li
+						code doc-afphoto
+					li
+						code doc-afdesign
+					li Extra `title` and `defs` tags removed from SVGs.
+					li Code has been rewritten with ECMAScript 6 to match the requirements of Gulp 4.x and Node.JS 12.
+					li Icons selectors now are sorted by category and iconname.
+				hr
+				h2 1.5.0 - 2019-11-04
+				h3 Added
+				ul
+					li
+						code gems
+						|  category in range 
+						code 62905-63004
+						| .
+					li
+						code gem-oval
+					li
+						code gem-pear
+					li
+						code gem-round
+					li
+						code cult-skull
+					li
+						code cult-jack-o-lantern
+					

@@ -1,0 +1,30 @@
+nav.navbar(role="navigation" aria-label="main navigation")
+	.container
+		.navbar-brand
+			a.navbar-item(href="/")
+				span.mrx_ic--3x.mrx_ic.mrx_ic--fw.mrx_ic-logo-marxco
+				span.title.is-size-3
+						| Marxco ICF
+			a.navbar-burger.burger(role="button" aria-label="menu" aria-expanded="false" data-target="navbar")
+				ul
+					each i in [1,2,3]
+						span(aria-hidden="true")
+		#navbar.navbar-menu
+			.navbar-start
+				a.navbar-item(href="/")
+					| Overview
+				a.navbar-item(href="/changelog.html")
+					| Changelog
+			.navbar-end
+				.navbar-item
+					.buttons
+						a.button.is-donation(href="https://liberapay.com/m.o.z.g/donate" target="_blank")
+							i.mrx_ic.mrx_ic-finance-liberapay
+							| &nbsp;
+							| Support
+						a.button(href="https://gitlab.com/M-O-Z-G/marxco-icf" target="_blank")
+							i.mrx_ic.mrx_ic-logo-gitlab
+							| &nbsp;
+							span Contribute
+
+

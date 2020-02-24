@@ -1,0 +1,11 @@
+include ../dataset/_icons
+.container.icon-wall
+	.columns
+		each item, index in icShowcase
+			if item.name != 'badge-designed-with'
+				.column
+					figure
+						span(class=prefix + 'ic ' + prefix + 'ic-' + item.name)
+						figcaption
+							| #{item.name}
+						figcaption.unicode #{item.char}

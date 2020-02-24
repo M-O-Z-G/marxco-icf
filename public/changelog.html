@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="no-js" lang="" itemscope itemtype="http://schema.org/Article">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge"><!-- Page Title. Maximum length 60-70 characters-->
+	<title>Changelog - Marxco Icon Font CS</title><!-- Page description. No longer than 155 characters.-->
+	<meta name="description" content="Open version of icon font from upcoming Marxco component system."><!-- Place this data between the <head> tags of your website-->
+	<!-- Schema.org markup for Google+-->
+	<meta itemprop="name" content="Changelog">
+	<meta itemprop="description" content="Open version of icon font from upcoming Marxco component system."><!-- Twitter Card data-->
+	<meta name="twitter:card">
+	<meta name="twitter:site" content="https://m-o-z-g.gitlab.io/marxco-icf">
+	<meta name="twitter:title" content="Changelog"><!-- Page description less than 200 characters-->
+	<meta name="twitter:description" content="Open version of icon font from upcoming Marxco component system.">
+	<meta name="twitter:creator" content="@M_O_Z_G"><!-- Open Graph data-->
+	<meta property="og:title" content="Changelog">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://m-o-z-g.gitlab.io/marxco-icf">
+	<meta property="og:description" content="Open version of icon font from upcoming Marxco component system.">
+	<meta property="og:site_name" content="Marxco Icon Font CS">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="apple-touch-icon" href="icon.png">
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+			if ($navbarBurgers.length > 0) {
+				$navbarBurgers.forEach(el => {
+					el.addEventListener('click', () => {
+						const target = el.dataset.target;
+						const $target = document.getElementById(target);
+						el.classList.toggle('is-active');
+						$target.classList.toggle('is-active');
+					});
+				});
+			}
+
+		});
+	</script><!-- inject:css-->
+	<link rel="stylesheet" href="icons.css">
+	<link rel="stylesheet" href="styles.css"><!-- endinject-->
+</head>
+
+<body>
+	<!--[if lte IE 11]><p class="browserupgrade">You are using an <strong>outdated</strong> browser.
+Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p><![endif]-->
+	<div class="wrapper">
+		<nav class="navbar" role="navigation" aria-label="main navigation">
+			<div class="container">
+				<div class="navbar-brand"><a class="navbar-item" href="/"><span class="mrx_ic--3x mrx_ic mrx_ic--fw mrx_ic-logo-marxco"></span><span class="title is-size-3">Marxco ICF</span></a><a class="navbar-burger burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbar">
+						<ul><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></ul>
+					</a></div>
+				<div class="navbar-menu" id="navbar">
+					<div class="navbar-start"><a class="navbar-item" href="/">Overview</a><a class="navbar-item" href="/changelog.html">Changelog</a></div>
+					<div class="navbar-end">
+						<div class="navbar-item">
+							<div class="buttons"><a class="button is-donation" href="https://liberapay.com/m.o.z.g/donate" target="_blank"><i class="mrx_ic mrx_ic-finance-liberapay"></i>&nbsp;
+									Support</a><a class="button" href="https://gitlab.com/M-O-Z-G/marxco-icf" target="_blank"><i class="mrx_ic mrx_ic-logo-gitlab"></i>&nbsp;<span>Contribute</span></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<section class="changelog">
+				<div class="content">
+					<h1>Changelog</h1>
+					<h2>1.6.0 - 2020-02-24</h2><img src="img/1_6_0-20200223.png">
+					<h3>Added</h3>
+					<ul>
+						<li><code>finance-liberapay</code> and <code>finance-liberapay-square</code>.</li>
+						<li><code>social-pawoo</code>and<code>social-pawoo-square</code>.</li>
+						<li><code>social-deviantart-square</code></li>
+						<li><code>social-flickr-square</code></li>
+						<li><code>social-mastodon-square</code></li>
+						<li><code>social-medium-square</code></li>
+						<li><code>social-steemit</code> and <code>social-steemit-square</code>.</li>
+						<li><code>gem-asscher</code></li>
+						<li><code>gem-cushion</code></li>
+						<li><code>gem-emerald</code></li>
+						<li><code>gem-heart</code></li>
+						<li><code>gem-marquise</code></li>
+						<li><code>gem-princess</code></li>
+						<li><code>gem-radiant</code></li>
+						<li><code>doc-afpub</code></li>
+						<li><code>logo-gitlab-square</code></li>
+						<li><code>logo-gumroad-square</code></li>
+						<li><code>weight</code></li>
+					</ul>
+					<h3>Changed</h3>
+					<ul>
+						<li>Removed loose parts from <code>gem-oval</code> and <code>gem-round</code></li>
+						<li><code>logo-github</code></li>
+						<li><code>doc-afphoto</code></li>
+						<li><code>doc-afdesign</code></li>
+						<li>Extra `title` and `defs` tags removed from SVGs.</li>
+						<li>Code has been rewritten with ECMAScript 6 to match the requirements of Gulp 4.x and Node.JS 12.</li>
+						<li>Icons selectors now are sorted by category and iconname.</li>
+					</ul>
+					<hr>
+					<h2>1.5.0 - 2019-11-04</h2>
+					<h3>Added</h3>
+					<ul>
+						<li><code>gems</code> category in range <code>62905-63004</code>.</li>
+						<li><code>gem-oval</code></li>
+						<li><code>gem-pear</code></li>
+						<li><code>gem-round</code></li>
+						<li><code>cult-skull</code></li>
+						<li><code>cult-jack-o-lantern</code></li>
+					</ul>
+				</div>
+			</section>
+		</div>
+		<footer class="footer">
+			<div class="container">
+				<div class="content">
+					<p>Created by <a href="https://gitlab.com/M-O-Z-G/" target="_blank">Aleksandr "M.O.Z.G" Dikov.</a> Licensed under the <a href="https://www.opensource.org/licenses/MIT" target="_blank">MIT License.</a> All trademarks and registered trademarks are the property of their respective owners.</p>
+				</div>
+			</div>
+		</footer>
+	</div><!-- inject:libs:js-->
+	<!-- endinject-->
+</body>
+
+</html>

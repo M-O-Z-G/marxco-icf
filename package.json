@@ -1,20 +1,20 @@
 {
 	"name": "marxco-icf",
-	"version": "1.5.0",
+	"version": "1.6.0",
 	"description": "Open version of icon font from upcoming Marxco component system.",
 	"main": "index.html",
 	"author": "Alexander \"M.O.Z.G\" Dikov",
 	"license": "MIT",
-	"dependencies": { },
+	"dependencies": {},
 	"devDependencies": {
 		"ansi-colors": "^3.2.4",
 		"async": "^2.6.3",
-		"del": "^3.0.0",
-		"gulp": "^3.9.1",
+		"del": "^5.1.0",
+		"gulp": "^4.0.2",
 		"gulp-changed": "^3.2.0",
 		"gulp-consolidate": "^0.2.0",
 		"gulp-cssbeautify": "^0.1.3",
-		"gulp-debug": "^3.2.0",
+		"gulp-debug": "^4.0.0",
 		"gulp-html-beautify": "^1.0.1",
 		"gulp-iconfont": "^10.0.3",
 		"gulp-inject": "^4.3.2",
@@ -23,6 +23,7 @@
 		"gulp-rename": "^1.4.0",
 		"gulp-replace": "^1.0.0",
 		"gulp-run": "^1.7.1",
+		"gulp-sort": "^2.0.0"
 		"gulp-sourcemaps": "^2.6.5",
 		"gulp-uglify": "^3.0.2",
 		"rimraf": "^2.6.3",
@@ -33,11 +34,11 @@
 	"browserslist": [
 		"last 1 version",
 		"> 1%",
-		"IE 9",
-		"firefox 28",
-		"chrome 30",
-		"safari 7",
-		"opera 20",
+		"IE 11",
+		"firefox 63",
+		"chrome 21",
+		"safari 6",
+		"opera 12",
 		"ios_saf 7"
 	]
 }
