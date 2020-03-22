@@ -1,7 +1,7 @@
 Marxco Iconfont CS
 ---
 
-[![Dependency Status](https://david-dm.org/m-o-z-g/marxco-icf.png)](https://david-dm.org/m-o-z-g/marxco-icf) [![devDependency Status](https://david-dm.org/m-o-z-g/marxco-icf/dev-status.png)](https://david-dm.org/m-o-z-g/marxco-icf#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/gitlab/M-O-Z-G/marxco-icf/badge.svg?branch=master)](https://coveralls.io/gitlab/M-O-Z-G/marxco-icf?branch=master)
+[![pipeline status](https://gitlab.com/M-O-Z-G/marxco-icf/badges/master/pipeline.svg)](https://gitlab.com/M-O-Z-G/marxco-icf/commits/master) [![Dependency Status](https://david-dm.org/m-o-z-g/marxco-icf.png)](https://david-dm.org/m-o-z-g/marxco-icf) [![devDependency Status](https://david-dm.org/m-o-z-g/marxco-icf/dev-status.png)](https://david-dm.org/m-o-z-g/marxco-icf#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/gitlab/M-O-Z-G/marxco-icf/badge.svg?branch=master)](https://coveralls.io/gitlab/M-O-Z-G/marxco-icf?branch=master)
 
 ## What is?
 
