@@ -1,3 +1,8 @@
+Marxco Iconfont CS
+---
+
+[![Dependency Status](https://david-dm.org/m-o-z-g/marxco-icf.png)](https://david-dm.org/m-o-z-g/marxco-icf) [![devDependency Status](https://david-dm.org/m-o-z-g/marxco-icf/dev-status.png)](https://david-dm.org/m-o-z-g/marxco-icf#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/gitlab/M-O-Z-G/marxco-icf/badge.svg?branch=master)](https://coveralls.io/gitlab/M-O-Z-G/marxco-icf?branch=master)
+
 ## What is?
 
 While Marxco Component System is still far from public release, I just decided to share some icons from it as separate repository.

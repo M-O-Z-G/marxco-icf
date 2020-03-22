@@ -1,13 +1,15 @@
+"use strict";
+
 const gulp         = require('gulp'),
 	fs             = require('fs'),
 	path           = require('path'),
 	pub            = 'public',
 	src            = 'src',
-	fontPath       = src + '/icons',
-	fontPathPub    = pub + '/font',
-	pathImg        = src + '/img',
-	pathPubImg     = pub + '/img',
-	templatesPath  = src + '/templates',
+	fontPath       = `${src}/icons`,
+	fontPathPub    = `${pub}/font`,
+	pathImg        = `${src}/img`,
+	pathPubImg     = `${pub}/img`,
+	templatesPath  = `${src}/templates`,
 
 	appName        = 'Marxco Icons CS',
 	appDescription = 'Open version of icon font from upcoming Marxco component system.',
@@ -41,7 +43,7 @@ const gulp         = require('gulp'),
 	del             = require('del'),
 	gulpPug         = require('gulp-pug'),
 	htmlbeautify    = require('gulp-html-beautify'),
-	iconFont        = require('gulp-iconfont'),
+	iconFont        = require('@m-o-z-g/gulp-iconfont'),
 	inject          = require('gulp-inject'),
 	notify          = require('gulp-notify'),
 	rename          = require('gulp-rename'),
@@ -354,11 +356,10 @@ function layout() {
 		.on('error', reportError )
 		.pipe(inject(sources, {ignorePath: `${pub}/`, addRootSlash: false}))
 		.on('error', reportError )
-		.pipe(htmlbeautify(
-			options = {
-				indent_size: 1,
-				indent_char: "\t"
-			}))
+		.pipe(htmlbeautify({
+			indent_size: 1,
+			indent_char: "\t"
+		}))
 		.on('error', reportError )
 		.pipe(gulp.dest(pub))
 		.pipe(debug());
