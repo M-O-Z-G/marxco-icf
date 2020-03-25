@@ -21,6 +21,7 @@ testing:
   stage: test
   script:
     - node_modules/gulp/bin/gulp.js --gulpfile ./gulpfile.js default
+    - make test-coveralls
 
 pages:
   stage: deploy
@@ -36,6 +37,8 @@ pages:
 
 merge_test:
   stage: test
-  script: node_modules/gulp/bin/gulp.js --gulpfile ./gulpfile.js default
+  script:
+    - node_modules/gulp/bin/gulp.js --gulpfile ./gulpfile.js default
+    - make test-coveralls
   only:
     - merge_requests
