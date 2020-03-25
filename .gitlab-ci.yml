@@ -21,24 +21,23 @@ testing:
   stage: test
   script:
     - node_modules/gulp/bin/gulp.js --gulpfile ./gulpfile.js default
-    - make test-coveralls
-
-pages:
-  stage: deploy
-  script:
-    - mkdir .public
-    - cp -r * .public
-    - mv .public public
-  artifacts:
     paths:
-      - public
-  only:
-    - master
+      - coverage/
 
 merge_test:
   stage: test
   script:
     - node_modules/gulp/bin/gulp.js --gulpfile ./gulpfile.js default
-    - make test-coveralls
   only:
     - merge_requests
+
+pages:
+  stage: deploy
+  script:
+    - mkdir public/coverage/
+    - mv coverage/ public/coverage/
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
