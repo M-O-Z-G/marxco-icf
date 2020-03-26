@@ -7,11 +7,13 @@ stages:
 
 cache:
   paths:
-    - node_modules
+    - node_modules/
 
 install_dependencies:
   stage: build
   script:
+    - npm install -g gulp nyc
+    - npm install coveralls
     - npm install
   artifacts:
     paths:
@@ -20,22 +22,30 @@ install_dependencies:
 testing:
   stage: test
   script:
-    - node_modules/gulp/bin/gulp.js --gulpfile ./gulpfile.js default
+    - npx nyc gulp default
+    - npx nyc report --reporter=html
+    - npx nyc report --reporter=text-lcov | npx ./node_modules/coveralls/bin/coveralls.js
   artifacts:
     paths:
-      - coverage/
+      - public
+      - coverage
+      - .nyc_output
 
 merge_test:
   stage: test
   script:
-    - node_modules/gulp/bin/gulp.js --gulpfile ./gulpfile.js default
+    - npx nyc gulp default
+    - npx nyc report --reporter=html
+    - npx nyc report --reporter=text-lcov | npx ./node_modules/coveralls/bin/coveralls.js
   only:
     - merge_requests
 
 pages:
   stage: deploy
   script:
-    - mkdir public/coverage/
+    - mkdir .public
+    - cp -r * .public
+    - mv .public public
     - mv coverage/ public/coverage/
   artifacts:
     paths:
