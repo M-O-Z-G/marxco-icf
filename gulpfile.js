@@ -243,6 +243,8 @@ function organize() {
 
 function generation(cb) {
 	let fontName = 'Marxco Icons CS',
+		prefix = 'mrx_',
+		selector = 'ic',
 		iconStream = gulp.src(`${fontPath}/**/*.svg`)
 		.pipe(sort({
 			comparator: function(file1, file2) {
@@ -296,6 +298,8 @@ function generation(cb) {
 				gulp.src(templatesPath + '/_styles.css')
 					.pipe(consolidate('lodash', {
 						fontName: fontName,
+						prefix: prefix,
+						selector: selector,
 						glyphs: glyphs,
 						fontPath: 'font',
 						fileVersion: fileVersion
@@ -310,6 +314,8 @@ function generation(cb) {
 				gulp.src(templatesPath + '/_icons.css')
 					.pipe(consolidate('lodash', {
 						fontName: fontName,
+						prefix: prefix,
+						selector: selector,
 						glyphs: glyphs,
 						fontPath: 'font',
 						fileVersion: fileVersion
