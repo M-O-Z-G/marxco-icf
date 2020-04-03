@@ -83,8 +83,8 @@ function checkForUnicodeInFilename(e) {
 };
 
 function randomHash() {
-	let hash = "";
-	let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	let hash = "",
+	chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 	for (let i = 0; i < 10; i++) {
 		hash += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -112,7 +112,8 @@ function unicodify(cb) {
 	gulp.src(`${fontPath}/**/*.svg`, {base: './'})
 		.pipe(vinylPaths(del))
 		.pipe(rename(function(path) {
-			prefix= path.basename.match(/^(.*?)(?=-)/);
+			let prefix= path.basename.match(/^(.*?)(?=-)/),
+				u= '';
 
 			if (prefix != null && icRanges.hasOwnProperty(prefix[0])) {
 				prefix= path.basename.match(/^(.*?)(?=-)/)[0];
@@ -120,7 +121,7 @@ function unicodify(cb) {
 				prefix= 'miscellaneous';
 			}
 
-			folderName= path.dirname.toString().replace(/.*\\/, '');
+			let folderName= path.dirname.toString().replace(/.*\\/, '');
 
 			if (folderName.match(/^zz_fa/)) {
 				u= 'u' + icRanges[prefix][1].toString(16).toUpperCase();
@@ -139,7 +140,8 @@ function unicodify(cb) {
 			
 			path.basename = u + '-' + path.basename;
 		}))
-		.pipe(gulp.dest('./'));
+		.pipe(gulp.dest('./'))
+		.on('finish', cb);
 };
 
 // Clean
@@ -147,7 +149,7 @@ function clean(cb) {
 	return del(pub);
 };
 
-function organize() {
+function organize(cb) {
 	const licIcons          = `${fontPath}/lic-*.svg`,
 		socialIcons         = `${fontPath}/social-*.svg`,
 		devIcons            = `${fontPath}/dev-*.svg`,
@@ -239,9 +241,11 @@ function organize() {
 	gulp.src(miscellaneousIcons)
 		.pipe(vinylPaths(del))
 		.pipe(gulp.dest(`${fontPath}/miscellaneous/`));
+
+	cb();
 }
 
-function generation(cb) {
+function generation(done) {
 	let fontName = 'Marxco Icons CS',
 		prefix = 'mrx_',
 		selector = 'ic',
@@ -342,7 +346,7 @@ function generation(cb) {
 				.on('finish', cb);
 		}
 		
-	], cb);
+	], done);
 };
 
 // Images
