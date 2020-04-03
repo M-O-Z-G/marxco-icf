@@ -52,7 +52,7 @@ test_script:
   - node --version
   - npm --version
   - gulp --version
-  - cmd: npx nyc gulp default
+  - cmd: npx nyc gulp test
 
 after_test:
   cmd: npx nyc report --reporter=text-lcov | npx coveralls

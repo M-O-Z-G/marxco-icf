@@ -22,7 +22,7 @@ install_dependencies:
 testing:
   stage: test
   script:
-    - npx nyc gulp default
+    - npx nyc gulp test
     - npx nyc report --reporter=html
     - npx nyc report --reporter=text-lcov | npx ./node_modules/coveralls/bin/coveralls.js
   artifacts:
@@ -34,7 +34,7 @@ testing:
 merge_test:
   stage: test
   script:
-    - npx nyc gulp default
+    - npx nyc gulp test
     - npx nyc report --reporter=html
     - npx nyc report --reporter=text-lcov | npx ./node_modules/coveralls/bin/coveralls.js
   only:
