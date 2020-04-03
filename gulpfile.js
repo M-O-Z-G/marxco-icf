@@ -372,6 +372,7 @@ function layout() {
 };
 
 const build = gulp.series(clean, generation, images, layout);
+const test = gulp.series(clean, cleanNames, organize, unicodify, generation, images, layout);
 
 // Export tasks
 exports.cleanNames = cleanNames;
@@ -382,4 +383,5 @@ exports.generation = generation;
 exports.images = images;
 exports.layout = layout;
 exports.default = build;
+exports.test = test;
 
