@@ -1,5 +1,23 @@
 # Changelog
 
+<details>
+	<summary><b>U̲N̲R̲E̲L̲E̲A̲S̲E̲D̲:</b></summary>
+
+### Added
+
+- `social-alternativeto`
+- `social-alternativeto-a`
+- `social-alternativeto-square`
+- `social-alternativeto-a-square`
+
+### Changed
+
+- `dev-node`
+
+------
+
+</details>
+
 ## 1.6.0 - 2020-02-24
 
 ### Added
