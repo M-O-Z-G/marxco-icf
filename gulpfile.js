@@ -254,7 +254,7 @@ function generation(done) {
 			comparator: function(file1, file2) {
 				function sanitizeIconName(f) {
 					let out = new Object();
-					out.name = f.path.replace(/.*src\\icons\\.*u[A-F0-9]+-/, '');
+					out.name = f.path.replace(/.*src([/\\]|\\\\)icons([/\\]|\\\\).*u[A-F0-9]+-/, '');
 					out.categorized = out.name.split('-')[0].match('lic|social|dev|finance|logo|polit|software|grafx|3d|doc|badge|market|cult|gem');
 					out.categorized = (out.categorized != null) ? true : false;
 					return out;
