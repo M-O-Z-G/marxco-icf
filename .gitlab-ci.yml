@@ -12,8 +12,7 @@ cache:
 install_dependencies:
   stage: build
   script:
-    - npm install -g gulp nyc parcel-bundler@^1.12.4
-    - npm install coveralls
+    - npm install -g gulp nyc coveralls parcel-bundler@^1.12.4
     - npm install
   artifacts:
     paths:
