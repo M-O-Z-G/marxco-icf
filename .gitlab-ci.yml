@@ -12,7 +12,7 @@ cache:
 install_dependencies:
   stage: build
   script:
-    - npm install -g gulp nyc coveralls parcel-bundler@^1.12.4
+    - npm install -g gulp nyc parcel-bundler@^1.12.4
     - npm install
   artifacts:
     paths:
@@ -23,7 +23,6 @@ testing:
   script:
     - npx nyc gulp test
     - npx nyc report --reporter=html
-    - npx nyc report --reporter=text-lcov | npx coveralls
     - rimraf public && parcel build ./src/index.pug --no-content-hash --no-minify -d ./public --public-url ./ --no-cache && node parcel-postbuild.js
   artifacts:
     paths:
@@ -36,7 +35,6 @@ merge_test:
   script:
     - npx nyc gulp test
     - npx nyc report --reporter=html
-    - npx nyc report --reporter=text-lcov | npx coveralls
     - rimraf public && parcel build ./src/index.pug --no-content-hash --no-minify -d ./public --public-url ./ --no-cache && node parcel-postbuild.js
   artifacts:
   only:
