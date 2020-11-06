@@ -25,7 +25,6 @@ testing:
     - npx nyc gulp test
     - npx nyc report --reporter=html
     - npx nyc report --reporter=text-lcov | npx ./node_modules/coveralls/bin/coveralls.js
-    - npm run build-layout
     - rimraf public && parcel build ./src/index.pug --no-content-hash --no-minify -d ./public --public-url ./ --no-cache && node parcel-postbuild.js
   artifacts:
     paths:
@@ -39,7 +38,6 @@ merge_test:
     - npx nyc gulp test
     - npx nyc report --reporter=html
     - npx nyc report --reporter=text-lcov | npx ./node_modules/coveralls/bin/coveralls.js
-    - npm run build-layout
     - rimraf public && parcel build ./src/index.pug --no-content-hash --no-minify -d ./public --public-url ./ --no-cache && node parcel-postbuild.js
   artifacts:
   only:
