@@ -14,24 +14,14 @@ block html
 				meta(name='description' content=description)
 				include meta/_social
 				meta(name='viewport' content='width=device-width, initial-scale=1')
+				link(rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png")
+				link(rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png")
+				link(rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png")
+				link(rel="shortcut icon" type="image/x-icon" href="img/favicon.ico")
 				link(rel='manifest' href='site.webmanifest')
-				link(rel='apple-touch-icon' href='icon.png')
-				script.
-					document.addEventListener('DOMContentLoaded', () => {
-					const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-					if ($navbarBurgers.length > 0) {
-					$navbarBurgers.forEach( el => {
-					el.addEventListener('click', () => {
-					const target = el.dataset.target;
-					const $target = document.getElementById(target);
-					el.classList.toggle('is-active');
-					$target.classList.toggle('is-active');
-					});
-					});
-					}
-
-					});
-				
+				link(rel="stylesheet" href="styles/main.css")
+				link(rel="stylesheet" href="icons.styl")
+				<!-- parcel-ignore [ <script type='text/javascript' src='js/main.js'></script> ] -->
 				// inject:css
 				// endinject
 				
@@ -55,6 +45,34 @@ block html
 								= " "
 								a(href="https://www.opensource.org/licenses/MIT" target="_blank") MIT License.
 								|  All trademarks and registered trademarks are the property of their respective owners.
+			if title == "Overview"
+				.modal#icon-preview
+					.modal-background
+					.modal-content
+						.box
+							.modal-icon-preview
+								figure.image.is-square
+									img(src="https://dummyimage.com/480x480/ebebeb/2e2e2e")
+							.modal-icon-dialog
+								p.subtitle#icName My name is!
+								.modal-icon-dialog__fields
+									.modal-icon-dialog__fieldgroup
+										.field.has-addons
+											p.control.is-expanded
+												input.input#icDataURI(type='text' value="" placeholder='base64 code' readonly)
+											p.control
+												a.button(aria-label="copy")#icCopy
+													| Copy
+										.field.has-addons
+											p.control.is-expanded
+												input.input#icSVG(type='text' value="" placeholder='svg code' readonly)
+											p.control
+												a.button(aria-label="save")#icSave
+													| Save
+					a.button.modal-close.is-large.is-rounded.is-square(aria-label="close")
+						span.icon.is-medium
+							i.mrx_ic.mrx_ic-cross
+					button.modal-close.is-large(aria-label="close")
 			block scripts
 				// inject:libs:js
 				// endinject

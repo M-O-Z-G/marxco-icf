@@ -1,0 +1,21 @@
+{
+    "name": "Marxco Iconfont CS",
+    "short_name": "marxco-icf",
+    "description": "Open version of icon font from upcoming Marxco component system.",
+    "start_url": "/index.html",
+    "icons": [
+        {
+            "src": "img/android-chrome-192x192.png?v=5APgn0EQak",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "img/android-chrome-512x512.png?v=5APgn0EQak",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#e3302b",
+    "background_color": "white",
+    "display": "standalone"
+}

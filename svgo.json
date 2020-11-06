@@ -1,0 +1,11 @@
+{
+	plugins: [{
+		cleanupAttrs: true
+	}, {
+		removeAttrs: {attrs: '(clip(-\w+)?|stroke(-\w+)?|fill(-\w+)?)'}
+	}, {
+		addAttributesToSVGElement: {attributes: ["role=\"img\""]}
+	}, {
+		sortAttrs: true
+	}]
+}

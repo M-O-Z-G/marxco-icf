@@ -1,0 +1,163 @@
+$font-path?= '<%= fontPath %>';
+$font-path= replace('\\', '/', $font-path);
+$font-path= replace('(\/|\\)+$', '', $font-path) + '/';
+
+@font-face
+	font-family: "<%= fontName %>";
+	src: url($font-path + '<%= fontName %>.eot?v=<%= fileVersion %>');
+	src: url($font-path + '<%= fontName %>.eot?#iefix&v=<%= fileVersion %>') format('eot'),
+		 url($font-path + '<%= fontName %>.woff2?v=<%= fileVersion %>') format('woff2'),
+		 url($font-path + '<%= fontName %>.woff?v=<%= fileVersion %>') format('woff'),
+		 url($font-path + '<%= fontName %>.ttf?v=<%= fileVersion %>') format('truetype'),
+		 url($font-path + '<%= fontName %>.svg#<%= fontName %>?v=<%= fileVersion %>') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+$framework ?= ''
+
+if $framework == 'marxco' 
+	$fw-base-font-size-px = $base-font-size-px;
+	$fw-base-font-size-em = $base-font-size-em;
+	$fw-base-font-units = $base-font-units;
+	$fw-border-radius = $border-radius;
+	$fw-accent-color = $palette.accent;
+else if $framework == 'bulma-stylus-plus'
+	$fw-base-font-size-px = $body-size;
+	$fw-base-font-size-em = $body-font-size;
+	$fw-base-font-units = unit($body-font-size);
+	$fw-border-radius = $radius;
+	$fw-accent-color = $primary;
+else
+	$fw-base-font-size-px = 16px;
+	$fw-base-font-size-em = 1em;
+	$fw-base-font-units = 'em';
+	$fw-border-radius = 3px;
+	$fw-accent-color = #DF3132;
+
+_bfs9w0Lbt?= $conversion-ratios is defined ? unit($fw-base-font-size-px / $conversion-ratios['scale']['px'][$fw-base-font-units], $fw-base-font-units) : 1em; 
+$ic-li-width?= 2 * _bfs9w0Lbt; //2em
+$ic-fw-width?= (1280 / 1024) * _bfs9w0Lbt; //1.25em	
+
+$fw-icon-inverse= $framework == 'marxco' ? $palette.ic-inverse : #D8D8D8; 
+
+.<%= prefix %><%= selector %>
+	display: inline-block;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-family: '<%= fontName %>';
+	line-height: 1;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	&--lg
+		font-size: (($fw-base-font-size-em * 4) / 3);
+		line-height: (($fw-base-font-size-em * 3) / 4);
+		vertical-align: -0.0667em;
+	
+	&--xs
+		font-size: $fw-base-font-size-em * .75;
+
+	&--sm
+		font-size: $fw-base-font-size-em * .875;
+
+	if $framework == 'marxco'
+		m_modular-steps();
+	else
+		&--footnotesize
+				font-size: 0.5em;
+				line-height: 0.75;
+
+		&--small
+				font-size: 0.7071em;
+				line-height: 1.0607;
+
+		&--big
+				font-size: 1.4142em;
+				line-height: 1.0607;
+
+		&--large
+				font-size: 2em;
+				line-height: 0.9375;
+
+		&--huge
+				font-size: 2.8284em;
+				line-height: 1.0607;
+
+		&--great
+				font-size: 4em;
+				line-height: 1.0312;
+
+		&--bizzaro
+				font-size: 5.6569em;
+				line-height: 0.9944;
+
+	for i in 1..10
+		&--{i}x { font-size: i * $fw-base-font-size-em; }
+
+	// Fixed Width Icons
+	&--fw
+		width: $ic-fw-width;
+		text-align: center;
+
+	&--ul
+		list-style-type: none;
+		margin-left: 2.5rem;
+		padding-left: 0rem;
+
+		& > li
+			position: relative;
+
+		&--li
+			left: -2em;
+			position: absolute;
+			text-align: center;
+			width: 2em;
+			line-height: inherit;
+
+	// Bordered
+	&--border
+		border: solid .08em $fw-accent-color;
+		border-radius: $fw-border-radius;
+		padding: .2em .25em .15em;
+
+	// Pulled
+	&--pull
+		&-left { float: left; }
+		&-right { float: right; }
+		^[0]&-left { margin-right: .3em; }
+		^[0]&-right { margin-left: .3em; }
+
+	// Stacked
+	&-stack
+		$stackMaxSteps = 2;
+		display: inline-block;
+		height: $fw-base-font-size-em * $stackMaxSteps;
+		line-height: $fw-base-font-size-em * $stackMaxSteps;
+		position: relative;
+		vertical-align: middle;
+		width: ($ic-fw-width * 2);
+		
+		$stackSteps = ()
+
+		$rootName = selector();
+		$commonStackStyle
+			left: 0;
+			position: absolute;
+			text-align: center;
+			width: 100%;
+
+		for i in 1..$stackMaxSteps
+			&-{i}x
+				@extend {$rootName} $commonStackStyle;
+				if i == 1
+					line-height: inherit;
+				else
+					font-size: $fw-base-font-size-em * i;
+
+		&-inverse
+			color: $fw-icon-inverse;
+
+<% _.each(glyphs, function(glyph) { %>	&-<%= glyph.name %>:before { content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %>" }
+<% }); %>

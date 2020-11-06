@@ -3,7 +3,7 @@ include ../dataset/_icons
 	.columns
 		each item, index in icShowcase
 			if item.name != 'badge-designed-with'
-				.column
+				.column.modal-button(id='ic-' + item.name data-slug=item.name data-target='icon-preview')
 					figure
 						span(class=prefix + 'ic ' + prefix + 'ic-' + item.name)
 						figcaption

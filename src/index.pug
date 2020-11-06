@@ -5,4 +5,11 @@ prepend html
 	- var description = "Open version of icon font from upcoming Marxco component system."
 
 block content
+	.section.searchbox
+		.container.search-boxes
+			.field
+				p.control.has-icons-right
+					input.input.is-large(type="search", value="", id="icsb", data-value="", placeholder='Search for…')
+					span.icon.is-right
+						i.mrx_ic.mrx_ic-search
 	include layout/sections/_sectionDemoIcons

@@ -1,30 +1,54 @@
 nav.navbar(role="navigation" aria-label="main navigation")
-	.container
-		.navbar-brand
-			a.navbar-item(href="index.html")
-				span.mrx_ic--3x.mrx_ic.mrx_ic--fw.mrx_ic-logo-marxco
-				span.title.is-size-3
-						| Marxco ICF
-			a.navbar-burger.burger(role="button" aria-label="menu" aria-expanded="false" data-target="navbar")
-				ul
-					each i in [1,2,3]
-						span(aria-hidden="true")
-		#navbar.navbar-menu
-			.navbar-start
-				a.navbar-item(href="index.html")
-					| Overview
-				a.navbar-item(href="changelog.html")
-					| Changelog
-			.navbar-end
-				.navbar-item
-					.buttons
-						a.button.is-donation(href="https://liberapay.com/m.o.z.g/donate" target="_blank")
-							i.mrx_ic.mrx_ic-finance-liberapay
-							| &nbsp;
-							| Support
-						a.button(href="https://gitlab.com/M-O-Z-G/marxco-icf" target="_blank")
+	.navbar-brand
+		a.navbar-item(href="./")
+			span.mrx_ic--3x.mrx_ic.mrx_ic--fw.mrx_ic-logo-marxco
+			span.title.is-size-3
+					| Marxco ICF
+		a.navbar-burger.burger(role="button" aria-label="menu" aria-expanded="false" data-target="navbar")
+			ul
+				each i in [1,2,3]
+					span(aria-hidden="true")
+	#navbar.navbar-menu
+		.navbar-start
+			a.navbar-item(href="./")
+				| Overview
+			a.navbar-item(href="./changelog.pug")
+				| Changelog
+		.navbar-end
+			.navbar-item
+				.buttons
+					.dropdown.is-support
+						.dropdown-trigger
+							.button.is-support.is-hidden-touch(aria-haspopup='true', aria-controls='dropdown-menu4')
+								span.icon
+									i.mrx_ic.mrx_ic-heart
+									| &nbsp;
+								span Support
+								span.icon
+									i.mrx_ic.mrx_ic-chevrone-down(aria-hidden='true')
+						#dropdown-menu4.dropdown-menu(role='menu')
+							.dropdown-content
+								a.dropdown-item(href='https://www.blockonomics.co/pay-url/029f3f4400fc11eb' target='_blank')
+									span.icon
+										i.mrx_ic.mrx_ic-finance-bitcoin.mrx_ic--fw
+										| &nbsp;
+									span Support with Blockonomics
+								a.dropdown-item(href='https://patreon.com/mozgstudio' target='_blank')
+									span.icon
+										i.mrx_ic.mrx_ic-finance-patreon.mrx_ic--fw
+										| &nbsp;
+									span Support on Patreon
+								.dropdown-item
+									p(style='font-family: Barlow Semi Condensed') Please, support my work if you like it!
+					a.button#btnContribute(href="https://gitlab.com/M-O-Z-G/marxco-icf" target="_blank")
+						span.icon
 							i.mrx_ic.mrx_ic-logo-gitlab
-							| &nbsp;
-							span Contribute
-
-
+						span Contribute
+					a.button.is-blockonomics.is-hidden-desktop(href="https://www.blockonomics.co/pay-url/029f3f4400fc11eb" target="_blank")
+						span.icon
+							i.mrx_ic.mrx_ic-finance-blockonomics
+						span Support with Blockonomics
+					a.button.is-patreon.is-hidden-desktop(href="https://patreon.com/mozgstudio" target="_blank")
+						span.icon
+							i.mrx_ic.mrx_ic-finance-patreon
+						span Support on Patreon
