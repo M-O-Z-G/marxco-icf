@@ -256,7 +256,7 @@ fs.readdir(`./${baseDir}`, (err, files) => {
 // 	console.log('data.json was copied');
 // });
 // usage
-copyFiles(sourceDir, baseDir, ['data.json', 'js\\main.js']).then(() => {
+copyFiles(sourceDir, baseDir, ['data.json', 'js/main.js']).then(() => {
 	console.log("JSON and JS are copied.");
 }).catch(err => {
 	console.log(err);
