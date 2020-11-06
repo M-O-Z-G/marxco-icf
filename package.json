@@ -21,7 +21,9 @@
 		"build": "nyc gulp",
 		"font-generation": "gulp generation"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"coveralls": "^3.1.0"
+	},
 	"devDependencies": {
 		"@m-o-z-g/gulp-iconfont": "^10.0.3",
 		"ansi-colors": "^4.1.1",
@@ -43,8 +45,11 @@
 		"gulp-uglify": "^3.0.2",
 		"lodash": "^4.17.15",
 		"lodash.escaperegexp": "^4.1.2",
+		"pug": "^3.0.0",
+		"replace-in-file": "^6.0.0",
 		"rimraf": "^3.0.2",
 		"run-sequence": "^2.2.1",
+		"stylus": "^0.54.8",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-paths": "^3.0.1",
 		"vinyl-source-stream": "^2.0.0"
