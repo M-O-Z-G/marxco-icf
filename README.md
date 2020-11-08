@@ -1,15 +1,11 @@
 Marxco Iconfont CS
 ---
 
-[![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/m-o-z-g/marxco-icf/master?label=version&logo=github)](https://github.com/M-O-Z-G/marxco-icf) [![GitHub Release Date](https://img.shields.io/github/release-date-pre/m-o-z-g/marxco-icf?logo=github)](https://github.com/M-O-Z-G/marxco-icf) [![Icons Count](https://frama.link/-1KM-48J)](https://m-o-z-g.gitlab.io/marxco-icf/) [![pipeline status](https://img.shields.io/gitlab/pipeline/m-o-z-g/marxco-icf?logo=gitlab&label=pipeline)](https://gitlab.com/M-O-Z-G/marxco-icf/pipelines) [![coverage report](https://gitlab.com/M-O-Z-G/marxco-icf/badges/master/coverage.svg)](https://m-o-z-g.gitlab.io/marxco-icf/coverage) [![AppVeyor](https://img.shields.io/appveyor/build/m-o-z-g/marxco-icf?logo=appveyor&logoColor=white)](https://ci.appveyor.com/project/M-O-Z-G/marxco-icf) [![Coveralls Coverage Status](https://coveralls.io/repos/gitlab/M-O-Z-G/marxco-icf/badge.svg?branch=master)](https://coveralls.io/gitlab/M-O-Z-G/marxco-icf?branch=master) [![devDependency Status](https://david-dm.org/m-o-z-g/marxco-icf/dev-status.png)](https://david-dm.org/m-o-z-g/marxco-icf?type=dev) [![GitHub package.json dependency Gulp version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/m-o-z-g/marxco-icf/dev/gulp?logo=gulp&logoColor=white&label=Gulp)](https://github.com/gulpjs/gulp) [![node](https://img.shields.io/static/v1?label=Node.js&message=%3E=8.17.0&logo=node.js&logoColor=white&color=informational)](https://github.com/nodejs/node) [![Activity](https://img.shields.io/github/commits-since/m-o-z-g/marxco-icf/latest/master?include_prereleases&label=commits%20from%20latest%20release)](https://gitlab.com/M-O-Z-G/marxco-icf/master/commits) [![Support the Author](https://frama.link/Wn756FPF)](https://liberapay.com/m.o.z.g)
+[![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/m-o-z-g/marxco-icf/master?label=version&logo=github)](https://github.com/M-O-Z-G/marxco-icf) [![GitHub Release Date](https://img.shields.io/github/release-date-pre/m-o-z-g/marxco-icf?logo=github)](https://github.com/M-O-Z-G/marxco-icf) [![Icons Count](https://frama.link/xHxyshm8)](https://m-o-z-g.gitlab.io/marxco-icf/) [![pipeline status](https://img.shields.io/gitlab/pipeline/m-o-z-g/marxco-icf?logo=gitlab&label=pipeline)](https://gitlab.com/M-O-Z-G/marxco-icf/pipelines) [![coverage report](https://gitlab.com/M-O-Z-G/marxco-icf/badges/master/coverage.svg)](https://m-o-z-g.gitlab.io/marxco-icf/coverage) [![AppVeyor](https://img.shields.io/appveyor/build/m-o-z-g/marxco-icf?logo=appveyor&logoColor=white)](https://ci.appveyor.com/project/M-O-Z-G/marxco-icf) [![devDependency Status](https://david-dm.org/m-o-z-g/marxco-icf/dev-status.png)](https://david-dm.org/m-o-z-g/marxco-icf?type=dev) [![GitHub package.json dependency Gulp version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/m-o-z-g/marxco-icf/dev/gulp?logo=gulp&logoColor=white&label=Gulp)](https://github.com/gulpjs/gulp) [![node](https://img.shields.io/static/v1?label=Node.js&message=%3E=8.17.0&logo=node.js&logoColor=white&color=informational)](https://github.com/nodejs/node) [![Activity](https://img.shields.io/github/commits-since/m-o-z-g/marxco-icf/latest/master?include_prereleases&label=commits%20from%20latest%20release)](https://gitlab.com/M-O-Z-G/marxco-icf/master/commits) [![Support the Author](https://frama.link/Wn756FPF)](https://www.blockonomics.co/pay-url/029f3f4400fc11eb) [![Patreon](https://img.shields.io/static/v1?logo=patreon&label=&message=support%20on%20Patreon&color=F96854&logoColor=white)](https://patreon.com/mozgstudio)
 
 ## What is?
 
-While Marxco Component System is still far from public release, I just decided to share some icons from it as separate repository.
-
-## CS/MS?
-
-CS _(Component System)_ is open versions of the icon font that I decided to share. MS version is closed and contains some specific icons for future design of my store.
+Marxco Iconfonts provides specific icons for 3D artists, print designers, merchants, and also reflect some cultural artifacts. This icon font is the part of big ambitious Stylus framework Marxco, designed for artists, and with the spirit of classic typesetting in its heart. Which however is in the deep development process, and perhaps will never be released for the public. But it's necessary to have some regular and specific icons under the hand, that's why this project has been separated into own repository, and I hope could be helpful for someone else.
 
 ## How to?
 
@@ -21,27 +17,29 @@ All icons are provided in common font formats and ready to use with your code an
 <i class="mrx_ic mrx_ic-logo-gitlab"></i>
 ```
 
+> Since 1.7.0 version, source icons related styles remade with Stylus, and now you have full control of prefixes, and its allows to use default variables from Marxco or [Bulma Stylus Plus](https://github.com/M-O-Z-G/bulma-stylus-plus) as default  values, with variable `$framework`. You can use it however you need. Initially, this repo suggested to work as is with CSS.
 
+> Since 1.7.0 version [Gulp](https://gulpjs.com) is doing generation and preparation work only. Showcase layout generated with [Parcel](https://parceljs.org).
 
 But if you're planning to make some changes:
 
 1. You need to install [Node.js](https://nodejs.org/en/).
-2. You need to install [Yarn](https://yarnpkg.com/lang/en/).
-3. You need to install [Gulp](https://gulpjs.com/).
-4. Clone this repository to local.
-5. Run terminal, set current dir to the path of your local repository.
-6. Run `yarn install` and wait for finished of instllation all dependencies.
-7. Run `gulp cleanNames` to remove unicode prefixes from filenames.
-8. Run `gulp organize` to move all svg files from `src\icons` to related sub-deirectories, based on their prefixes.
-9. Run `gulp unicodify` to add unicode prefixes to filenames, base of `icRanges` array from `gulpfile.js`.
-10. Run `gulp generation` to rewrite all templates, generate fonts and css files.
 
-If you want, you also could use `gulp layout`, this task will create HTML files with cheatsheet as presented [here](https://m-o-z-g.gitlab.com/marxco-icf/).
+2. You need to install [Yarn](https://yarnpkg.com/lang/en/).
+
+3. You need to install [Gulp](https://gulpjs.com/).
+
+4. Clone this repository to local.
+
+5. Run terminal, set current dir to the path of your local repository.
+
+6. Run `yarn install` and wait for finished of installation all dependencies.
+
+	Next commands available:
+- `npm run build` to optimize, organize new icons then generate fonts and build showcase layout.
+- `npm run font-generation` to generate fonts with no processing.
+- `gulp test` like `npm run build` but resets all icon unicode names then give new.
 
 ### Supported prefixes by default:
 
-`logo-`, `badge-`, `social-`, `finance-`, `market-`, `grafx-`, `3d-`, `doc-`, `software-`, `lic-`, `dev-`, `polit-`, `cult-`, `gem-`. Any other prefixes and filenames will be precced as `miscellaneous` icons.
-
-## What's next?
-
-No any code changes are planned in this repository, but new svg, updated font files and regenerated CSS for new additions/changes.
+`logo-`, `badge-`, `social-`, `finance-`, `market-`, `grafx-`, `3d-`, `doc-`, `software-`, `lic-`, `dev-`, `polit-`, `cult-`, `gem-`, `userpic-`. Any other prefixes and filenames will be proceeded as `miscellaneous` icons.

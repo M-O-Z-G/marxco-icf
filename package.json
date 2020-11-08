@@ -1,6 +1,6 @@
 {
 	"name": "marxco-icf",
-	"version": "1.6.0",
+	"version": "1.7.0",
 	"homepage": "https://m-o-z-g.gitlab.io/marxco-icf/",
 	"description": "Open version of icon font from upcoming Marxco component system.",
 	"main": "index.js",

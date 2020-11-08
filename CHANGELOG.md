@@ -1,22 +1,64 @@
 # Changelog
 
-<details>
-	<summary><b>U̲N̲R̲E̲L̲E̲A̲S̲E̲D̲:</b></summary>
+## 1.7.0 - 2020-10-12
 
 ### Added
 
-- `social-alternativeto`
-- `social-alternativeto-a`
-- `social-alternativeto-square`
-- `social-alternativeto-a-square`
+- `cult-biohazard`
+- `cult-covid-19`
+- `cult-jive-belarus`
+- `dev-css3-alt`
+- `dev-html5`
+- `dev-js-deliver`
+- `dev-processwire`
+- `dev-stylus`
+- `dev-wordpress`
+- `doc-pdf`
+- `finance-blockonomics`
+- `finance-buymeacoffee`
+- `finance-embily` and `finance-embily-circle`.
+- `finance-ko-fi-circle`
+- `finance-ko-fi`
+- `finance-mastercard`
+- `finance-patreon-circle` and `finance-patreon-square`.
+- `finance-ttmcard`
+- `finance-webmoney`
+- `logo-android-2019`
+- `logo-creative-cloud`
+- `logo-freelancer_com`
+- `logo-lets-encrypt`
+- `logo-mediafire`
+- `logo-mega-nz`
+- `logo-openinitiative`
+- `logo-origin`
+- `market-etsy-square` and `market-etsy`.
+- `market-f-droid`
+- `social-artstation`
+- `social-disroot`
+- `social-tiktok`
+- `software-hangout`
+- `software-viber`
+- `userpic-boy`
+- `userpic-girl`
+- `userpic-man`
+- `userpic-women`
+- `polit-democratic-party-us`
+- `polit-democratic-party-us-modern`
+- `polit-republican-party-us`
+- `polit-uk`
+- `clipboard`
+- `copy`
+- `download`
+- `edit-object`
+- `edit`
+- `erase`
+- `gallery` and `gallery-circles`.
+- `list`
+- `paste`
+- `rss`
+- `star`, `star-solid` and `star-half`.
+- `upload`
 
-### Changed
-
-- `dev-node`
-
-------
-
-</details>
 
 ## 1.6.0 - 2020-02-24
 
