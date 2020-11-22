@@ -5,7 +5,7 @@ $font-path= replace('(\/|\\)+$', '', $font-path) + '/';
 @font-face
 	font-family: "<%= fontName %>";
 	src: url($font-path + '<%= fontName %>.eot?v=<%= fileVersion %>');
-	src: url($font-path + '<%= fontName %>.eot?#iefix&v=<%= fileVersion %>') format('eot'),
+	src: url($font-path + '<%= fontName %>.eot?#iefix&v=<%= fileVersion %>') format('embedded-opentype'),
 		 url($font-path + '<%= fontName %>.woff2?v=<%= fileVersion %>') format('woff2'),
 		 url($font-path + '<%= fontName %>.woff?v=<%= fileVersion %>') format('woff'),
 		 url($font-path + '<%= fontName %>.ttf?v=<%= fileVersion %>') format('truetype'),
@@ -14,6 +14,7 @@ $font-path= replace('(\/|\\)+$', '', $font-path) + '/';
 	font-style: normal;
 
 $framework ?= ''
+$prefix ?= '<%= prefix %>'
 
 if $framework == 'marxco' 
 	$fw-base-font-size-px = $base-font-size-px;
@@ -40,12 +41,12 @@ $ic-fw-width?= (1280 / 1024) * _bfs9w0Lbt; //1.25em
 
 $fw-icon-inverse= $framework == 'marxco' ? $palette.ic-inverse : #D8D8D8; 
 
-.<%= prefix %><%= selector %>
+.{$prefix}<%= selector %>
 	display: inline-block;
-	font-weight: normal;
-	font-style: normal;
-	font-variant: normal;
-	font-family: '<%= fontName %>';
+	font-weight: normal !important;
+	font-style: normal !important;
+	font-variant: normal !important;
+	font-family: '<%= fontName %>' !important;
 	line-height: 1;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;

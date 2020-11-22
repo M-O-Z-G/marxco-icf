@@ -1,16 +1,16 @@
 @font-face {
   font-family: "Marxco Icons CS";
-  src: url("../font/Marxco Icons CS.eot?v=NQpg0CE58n");
-  src: url("../font/Marxco Icons CS.eot?#iefix&v=NQpg0CE58n") format('eot'), url("../font/Marxco Icons CS.woff2?v=NQpg0CE58n") format('woff2'), url("../font/Marxco Icons CS.woff?v=NQpg0CE58n") format('woff'), url("../font/Marxco Icons CS.ttf?v=NQpg0CE58n") format('truetype'), url("../font/Marxco Icons CS.svg#Marxco%20Icons%20CS?v=NQpg0CE58n") format('svg');
+  src: url("../font/Marxco Icons CS.eot?v=jcyVl8J2SG");
+  src: url("../font/Marxco Icons CS.eot?#iefix&v=jcyVl8J2SG") format('embedded-opentype'), url("../font/Marxco Icons CS.woff2?v=jcyVl8J2SG") format('woff2'), url("../font/Marxco Icons CS.woff?v=jcyVl8J2SG") format('woff'), url("../font/Marxco Icons CS.ttf?v=jcyVl8J2SG") format('truetype'), url("../font/Marxco Icons CS.svg#Marxco%20Icons%20CS?v=jcyVl8J2SG") format('svg');
   font-weight: normal;
   font-style: normal;
 }
 .mrx_ic {
   display: inline-block;
-  font-weight: normal;
-  font-style: normal;
-  font-variant: normal;
-  font-family: 'Marxco Icons CS';
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  font-family: 'Marxco Icons CS' !important;
   line-height: 1;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
