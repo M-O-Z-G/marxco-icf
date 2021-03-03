@@ -45,7 +45,7 @@
 		"gulp-uglify": "^3.0.2",
 		"lodash": "^4.17.15",
 		"lodash.escaperegexp": "^4.1.2",
-		"pug": "^3.0.0",
+		"pug": "^3.0.1",
 		"replace-in-file": "^6.0.0",
 		"rimraf": "^3.0.2",
 		"run-sequence": "^2.2.1",
