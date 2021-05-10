@@ -43,7 +43,7 @@
 		"gulp-svgo": "^2.1.1",
 		"gulp-tap": "^2.0.0",
 		"gulp-uglify": "^3.0.2",
-		"lodash": "^4.17.15",
+		"lodash": "^4.17.21",
 		"lodash.escaperegexp": "^4.1.2",
 		"pug": "^3.0.0",
 		"replace-in-file": "^6.0.0",
