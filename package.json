@@ -27,7 +27,7 @@
 	"devDependencies": {
 		"@m-o-z-g/gulp-iconfont": "^10.0.3",
 		"ansi-colors": "^4.1.1",
-		"async": "^3.2.0",
+		"async": "^3.2.2",
 		"del": "^5.1.0",
 		"gulp": "^4.0.2",
 		"gulp-changed": "^4.0.2",
